@@ -1,0 +1,1 @@
+# Dockerize static Website with Apache (httpd)
