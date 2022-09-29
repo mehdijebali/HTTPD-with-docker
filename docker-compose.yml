@@ -24,6 +24,21 @@ services:
        - '80:80'
       networks:
        - frontend
+  
+  prometheus:
+      image: prom/prometheus:latest
+      container_name: prometheus
+      ports:
+        - 9090:9090
+      command:
+        - --config.file=/etc/prometheus/prometheus.yml
+      volumes:
+        - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      depends_on:
+        - weather-app1
+        - weather-app2
+        - weather-app3
+        - loadbalancer
 
 networks:
   frontend:
