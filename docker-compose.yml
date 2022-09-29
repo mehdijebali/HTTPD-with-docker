@@ -1,22 +1,22 @@
 version: '3.2'
 services:
-  weather-app1:
+  web1:
       image: mehdijebali/widgetfactory:1.1.1
       container_name: web1                    
       networks:
        - frontend
-  weather-app2:
+  web2:
       image: mehdijebali/widgetfactory:1.1.1
       container_name: web2
       networks:
        - frontend
-  weather-app3:
+  web3:
       image: mehdijebali/widgetfactory:1.1.1
       container_name: web3
       networks:
        - frontend
 
-  loadbalancer:
+  load-balancer:
       build: ./loadbalancer
       container_name: load-balancer
       tty: true
@@ -35,10 +35,10 @@ services:
       volumes:
         - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       depends_on:
-        - weather-app1
-        - weather-app2
-        - weather-app3
-        - loadbalancer
+        - web1
+        - web2
+        - web3
+        - load-balancer
 
 networks:
   frontend:

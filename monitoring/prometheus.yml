@@ -3,7 +3,7 @@ scrape_configs:
   scrape_interval: 5s
   static_configs:
   - targets:
-    - weather-app1
-    - weather-app2
-    - weather-app3
-    - loadbalancer
+    - web1
+    - web2
+    - web3
+    - load-balancer
