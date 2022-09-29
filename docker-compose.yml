@@ -2,19 +2,23 @@ version: '3.2'
 services:
   weather-app1:
       image: mehdijebali/widgetfactory:1.1.1
+      container_name: web1                    
       networks:
        - frontend
   weather-app2:
       image: mehdijebali/widgetfactory:1.1.1
+      container_name: web2
       networks:
        - frontend
   weather-app3:
       image: mehdijebali/widgetfactory:1.1.1
+      container_name: web3
       networks:
        - frontend
 
   loadbalancer:
       build: ./loadbalancer
+      container_name: load-balancer
       tty: true
       ports:
        - '80:80'
